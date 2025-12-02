@@ -2,6 +2,7 @@
 
 import type { ComponentType } from "react";
 import { useAuth } from "@/hooks";
+import { Loader } from "@mantine/core";
 
 export const withAuth = <P extends object>(
   WrappedComponent: ComponentType<P>,
@@ -12,12 +13,10 @@ export const withAuth = <P extends object>(
 
     if (loading) {
       return (
-        <div
-          className="flex min-h-[60vh] w-full items-center justify-center"
-          aria-label="Loading"
-        >
-          <div className="h-10 w-10 animate-spin rounded-full border-4 border-sage-100 border-t-sage-500 shadow-sm" />
-        </div>
+        <Loader
+          size="lg"
+          variant="dots"
+        />
       );
     }
 
@@ -28,7 +27,9 @@ export const withAuth = <P extends object>(
     return <WrappedComponent {...props} />;
   };
 
-  WithAuthComponent.displayName = `withAuth(${getDisplayName(WrappedComponent)})`;
+  WithAuthComponent.displayName = `withAuth(${getDisplayName(
+    WrappedComponent
+  )})`;
 
   return WithAuthComponent;
 };

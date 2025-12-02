@@ -49,11 +49,11 @@ const isTokenExpired = (): boolean => {
 const login = async (
   username: string,
   password: string,
-  remember: boolean = true,
+  remember: boolean = true
 ): Promise<ApiResponse<LoginResponse>> => {
   const response = await apiService.post<ApiResponse<LoginResponse>>(
     "/auth/login",
-    { username, password },
+    { username, password }
   );
   if (response.success && response.data?.token) {
     setToken(response.data.token, remember);

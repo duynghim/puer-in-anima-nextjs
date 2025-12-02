@@ -1,6 +1,3 @@
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-
 export function getInitials(input: string) {
   const cleaned = input.replaceAll(/[_\-.]+/g, ' ').trim();
   const parts = cleaned.split(/\s+/).filter(Boolean);
@@ -19,7 +16,3 @@ export function nameToColor(name: string) {
   const hue = Math.abs(hash) % 360;
   return `hsl(${hue}, 70%, 50%)`;
 }
-
-export const cn = (...inputs: ClassValue[]) => {
-  return twMerge(clsx(inputs));
-};
